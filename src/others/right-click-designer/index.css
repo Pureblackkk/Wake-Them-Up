@@ -1,0 +1,9 @@
+.right-click-designer-wrap {
+    position: absolute;
+    width: 200px;
+    background-color: rgb(239, 244, 247);
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.319);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

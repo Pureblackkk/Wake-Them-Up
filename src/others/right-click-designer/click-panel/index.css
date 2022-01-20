@@ -1,0 +1,17 @@
+.right-click-designer-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.right-click-designer-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.right-click-designer-selection:hover {
+    background-color: rgba(197, 206, 213, 0.475);
+}

@@ -1,0 +1,10 @@
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/others/panel/index.css ***!
+  \******************************************************************************/
+.panel-wrap {
+    width: 20%;
+    height: 80%;
+    background-color: antiquewhite;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFuZWwuY3NzIiwibWFwcGluZ3MiOiI7OztBQUFBO0lBQ0ksVUFBVTtJQUNWLFdBQVc7SUFDWCw4QkFBOEI7QUFDbEMsQyIsInNvdXJjZXMiOlsid2VicGFjazovL2luZm9ybWF0aW9uLWRpZmZ1c2lvbi1kZW1vLy4vc3JjL290aGVycy9wYW5lbC9pbmRleC5jc3MiXSwic291cmNlc0NvbnRlbnQiOlsiLnBhbmVsLXdyYXAge1xuICAgIHdpZHRoOiAyMCU7XG4gICAgaGVpZ2h0OiA4MCU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogYW50aXF1ZXdoaXRlO1xufSJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/
