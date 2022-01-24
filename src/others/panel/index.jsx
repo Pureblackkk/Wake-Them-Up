@@ -1,4 +1,5 @@
 import React from 'react';
+import CopyRight from './panel-component/copy-right/index';
 import './index.css';
 
 class Panel extends React.Component {
@@ -10,6 +11,7 @@ class Panel extends React.Component {
         return(
             <div className='panel-wrap'>
                 Here's the panellllll
+                <CopyRight/>
             </div>
         ) 
     }

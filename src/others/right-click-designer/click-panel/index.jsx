@@ -5,12 +5,10 @@ import './index.css';
 export default function ClickPanel(props) {
     const { objectType, result, callback } = props;
 
-    const getContentList = () => {
-        // TODO: Get icon src and content
-        return RightClickDesignerConfig[objectType];
-    }
+    // Get icon src and content
+    const contentList = RightClickDesignerConfig[objectType];
 
-    const handleClick = (eventName) => {
+    const handleClick = (event, eventName) => {
         console.log('event', eventName);
 
         // Dispatch the event function
@@ -21,15 +19,19 @@ export default function ClickPanel(props) {
 
         // Run callback function from father component
         callback();
+        
+        // Stop click event pop up
+        event.stopPropagation();
+        event.nativeEvent.stopImmediatePropagation();
     }
 
     return(
         <div className='right-click-designer-content'>
             {
-                getContentList().map((item, index) => {
+                contentList.map((item, index) => {
                     return (
                         <li className='right-click-designer-selection' 
-                            onClick={() => handleClick(item.callbackName)} 
+                            onClick={(e) => handleClick(e, item.callbackName)} 
                             key={index}
                         >
                             <div className='iconfont right-click-designer-selection-icon' dangerouslySetInnerHTML={{ __html: item.src }}></div>

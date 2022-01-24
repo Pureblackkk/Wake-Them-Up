@@ -5,6 +5,11 @@
          url('./common/icon/iconfont.ttf?t=1545807318834') format('truetype');
 }
 
+@font-face {
+    font-family: 'CommonPixel';
+    src: url('./common/icon/COMMP___.TTF') format('woff');
+}
+
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;

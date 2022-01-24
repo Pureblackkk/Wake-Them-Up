@@ -20,12 +20,20 @@ const sleeperConfig = [
         content: 'Paste',
         callbackName: ActionControllerEventName.keyboardPaste,
     },
+    {
+        tip: 'Delete Item',
+        src: '&#xe8b6;',
+        content: 'Delete',
+        callbackName: ActionControllerEventName.keyboardDelete,
+    }
 ];
 
 const edgeConfig = [
-    // TODO: add egde config
     {
-        tip: 'Delete'
+        tip: 'Delete Item',
+        src: '&#xe8b6;',
+        content: 'Delete',
+        callbackName: ActionControllerEventName.keyboardDelete,
     }
 ]
 
@@ -40,6 +48,7 @@ const backgroundConfig = [
 
 export const RightClickDesignerConfig = {
     'sleeper': sleeperConfig,
-    'edge': edgeConfig,
+    'line': edgeConfig,
+    'head': edgeConfig,
     'background': backgroundConfig,
 }

@@ -9,18 +9,26 @@
         html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
         }
         li {
             list-style-type: none;
+        }
+        .workingSpace {
+            position: relative;
+            display: flex;
         }
     </style>
 </head>
 <body>
     <header id="header"></header>
     <div>
-        <div id="panel"></div>
+        <div class="workingSpace">
+            <div id="panel"></div>
+            <canvas id="myCanvas"></canvas>
+        </div>
         <div id="rightClickDesigner"></div>
-        <canvas id="myCanvas"></canvas>
     </div>
     <footer id="footer"></footer>
 </body>

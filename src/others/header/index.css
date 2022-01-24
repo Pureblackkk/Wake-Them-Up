@@ -1,0 +1,23 @@
+.header-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 66px;
+    border-bottom: 1.5px solid rgba(191, 191, 191, 0.31);
+    padding: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgba(191, 191, 191, 0.31);
+}
+
+.header-web-lgo {
+    width: 54px;
+    height: 54px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(77, 77, 77, 0.434) ;
+}
+
+.header-web-title {
+    font-size: 30px;
+    font-family: 'CommonPixel', sans-serif;
+    padding-left: 25px;
+}

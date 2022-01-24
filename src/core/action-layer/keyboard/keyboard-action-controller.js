@@ -51,7 +51,7 @@ class KeyboardActionController {
      */
     keyboardDeleteController(clickObject) {
         clickObject.deleteSelf();
-
+        
         // Trigger the painter event to redraw
         Eventer.dispatchEvent(
             PainterEventName.repaint,
@@ -127,8 +127,6 @@ class KeyboardActionController {
 
         // Update temp stack
         sleeper.textTempStack.text = newContent;
-
-        console.log(sleeper.textInformation.content);
 
         // Trigger the painter event to redraw
         Eventer.dispatchEvent(

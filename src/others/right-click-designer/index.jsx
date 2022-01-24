@@ -1,7 +1,6 @@
 import React from 'react';
 import ClickPanel from './click-panel/index'
 import { ActionControllerEventName } from '../../global/event-name-config';
-import Panel from '../panel';
 import './index.css';
 
 class RightClickDesigner extends React.Component {
@@ -18,7 +17,7 @@ class RightClickDesigner extends React.Component {
             this.onRightClick.bind(this)
         );
 
-        // document.addEventListener('mousedown', this.handlePanelClick.bind(this));
+        document.addEventListener('click', this.handlePanelClick.bind(this));
 
         // Define position
         this.mousePosition = {

@@ -39,8 +39,8 @@ class Canvas {
      */
     initContext() {
         this.canvas = document.getElementById(GlobalConfig.canvasId);
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
+        this.canvas.width = window.innerWidth - GlobalConfig.pandelWidth;
+        this.canvas.height = window.innerHeight - GlobalConfig.headerHeight;
     }
 
     /**

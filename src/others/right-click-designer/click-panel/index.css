@@ -4,6 +4,10 @@
     flex-direction: column;
 }
 
+.right-click-designer-content:hover {
+    cursor: pointer;
+}
+
 .right-click-designer-selection {
     display: flex;
     justify-content: space-between;
