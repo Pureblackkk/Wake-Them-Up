@@ -1,0 +1,13 @@
+.panel-cascade-probability {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.panel-cascade-name {
+    font-family: 'CommonPixel', sans-serif;
+    margin-left: -20px;
+    margin-right: 10px;
+}

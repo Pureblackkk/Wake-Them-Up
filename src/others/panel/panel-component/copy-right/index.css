@@ -1,4 +1,7 @@
 .panel-copyright {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: 5px;
     font-family: 'CommonPixel', sans-serif;
     font-size: 5px;
 }

@@ -26,8 +26,29 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                exclude: /node_modules/,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                use: [
+                    MiniCssExtractPlugin.loader, 
+                    "css-loader",
+                ],
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                modifyVars: {
+                                    'primary-color': '#2E2E2E',
+                                    'font-size': '2px'
+                                },
+                                javascriptEnabled: true,
+                            },
+                        },
+                    },
+                ]
             },
             {
                 test: /\.(png|jp(e*)g|svg|gif)$/,

@@ -43,8 +43,8 @@ export const ActionControllerEventName = {
 };
 
 export const PanelOpearationControllerEventName = {
-
-}
+    closeColorPicker: 'closeColorPicker',
+};
 
 export const UndoRedoEventName = {
     addMutation: 'addMutation',

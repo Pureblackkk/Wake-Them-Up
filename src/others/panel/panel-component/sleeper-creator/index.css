@@ -1,0 +1,38 @@
+.panel-sleeper-color,
+.panel-border-color {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    padding: 5px 20px 5px 20px;
+}
+
+.panel-sleeper-name,
+.panel-border-name {
+    font-size: 23px;
+    font-family: 'CommonPixel', sans-serif;
+}
+
+.panel-sleeper-example,
+.panel-border-example {
+    font-size: 30px;
+}
+
+.panel-sleeper-example,
+.panel-border-example:hover {
+    cursor: pointer;
+}
+
+.panel-color-picker {
+    position: fixed;
+    top: 20px
+}
+
+.panel-create-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+    font-family: 'CommonPixel', sans-serif;
+}
