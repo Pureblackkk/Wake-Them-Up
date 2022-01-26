@@ -26,7 +26,8 @@
 
 .panel-color-picker {
     position: fixed;
-    top: 20px
+    top: 20px;
+    z-index: 1;
 }
 
 .panel-create-button {

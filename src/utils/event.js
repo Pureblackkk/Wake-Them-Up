@@ -27,7 +27,7 @@ class Event {
         if (!(eventName in this.eventDictionary)) {
             this.eventDictionary[eventName] = [];
         }
-
+        
         // Push the callback function into list
         this.eventDictionary[eventName].push(callback);
     }

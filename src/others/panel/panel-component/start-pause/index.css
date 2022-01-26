@@ -1,0 +1,42 @@
+.panel-start-pause-wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.panel-start-pause-name {
+    margin-top: 30px;
+    font-size: 60px;
+    height: 60px;
+    border-radius: 1000px;
+}
+
+.panel-start-pause-name:hover {
+    cursor: pointer;
+    animation-name: startIcon;
+    animation-duration: 0.5s;
+}
+
+@keyframes startIcon {
+    0% {
+        font-size: 60px;
+    }
+
+    70% {
+        font-size: 80px;
+    }
+
+    100% {
+        font-size: 60px;
+    }
+}
+
+.panel-start-pause-reset {
+    margin-left: auto;
+    font-family: 'CommonPixel', sans-serif;
+    margin-right: 12px;
+    margin-top: 7px;
+}
+

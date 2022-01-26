@@ -102,6 +102,8 @@ class MouseActionController {
             edge.isActive = false;
         }
 
+        console.log(SleeperPooler.pool);
+
         // Trigger the painter event to redraw
         Eventer.dispatchEvent(
             PainterEventName.repaint,

@@ -2,6 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.less';
 import './index.css';
 import { Slider, InputNumber, Row, Col, Tooltip} from 'antd';
+import { PanelOpearationControllerEventName } from '../../../../global/event-name-config';
 
 class NumberWeights extends React.Component {
     constructor() {
@@ -15,16 +16,23 @@ class NumberWeights extends React.Component {
         if (isNaN(value)) {
             return;
         }
+
         this.setState({
             inputValue: value,
         });
+
+        // Dispatch event for change all the sleeper weight
+        window.Eventer.dispatchEvent(
+            PanelOpearationControllerEventName.changeAllProbability,
+            value,
+        )
     };
     
     render() {
         const { inputValue } = this.state;
         return (
             <div className='panel-cascade-probability'>
-                <Tooltip placement="topLeft" title={'Probability for waking up other sleepers'}>
+                <Tooltip placement="bottomLeft" title={'Probability for waking up other sleepers'}>
                     <div className='panel-cascade-name'>Probability</div>
                 </Tooltip>    
                 <div className='panel-cascade-scroll-bar'>

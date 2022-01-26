@@ -5,6 +5,9 @@ import { KeyboardActionController } from '../action-layer/keyboard/keyboard-acti
 import { GlobalConfig } from '../../global/global-config';
 import { Painter } from './painter/painter';
 import { UndoRedo } from '../../undo-redo/undo-redo';
+import { SleepersFactory } from '../data-layer/sleeper/sleeper-factory';
+import { PanelOperationController } from '../action-layer/panel/panel-operation-controller';
+import { WakingProcessController } from '../action-layer/waking-process/waking-process-controller';
 
 class Canvas {
     static getInstance() {
@@ -32,6 +35,7 @@ class Canvas {
         this.initPainter();
         this.initActionRelated();
         this.initUndoRedoStack();
+        this.initSleeperFactory();
     }
 
     /**
@@ -58,6 +62,8 @@ class Canvas {
         this.mouseAction = new MouseAction(this.canvas);
         this.keyboardActionController = new KeyboardActionController();
         this.keyboardAction = new KeyboardAction(this.canvas, this.mouseAction);
+        this.panelOperationController = new PanelOperationController();
+        this.wakingProcessController = new WakingProcessController();
     }
 
     /**
@@ -65,6 +71,13 @@ class Canvas {
      */
     initUndoRedoStack() {
         UndoRedo.getInstance();
+    }
+
+    /**
+     * Init sleeper factory
+     */
+    initSleeperFactory() {
+        SleepersFactory.mountCanvas(this);
     }
 }
 

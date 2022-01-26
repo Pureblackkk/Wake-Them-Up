@@ -12,7 +12,7 @@ export const DeafultArrowSetting = {
 
 export const ActiveArrowSetting = {
     lineWidth: 3, 
-    lineColor: 'blue',
+    lineColor: '#0068FF',
 };
 
 export const DeafaultBoundingBoxSetting = {

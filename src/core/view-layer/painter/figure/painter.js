@@ -61,6 +61,7 @@ class FigurePainter {
             borderWith,
             borderColor,
             isAnchor,
+            activeBorderColor,
         } = params;
 
         // Draw the circle
@@ -89,9 +90,14 @@ class FigurePainter {
             )
         ) {
             this.canvasContext.lineWidth = borderWith;
-            this.canvasContext.strokeStyle = borderColor;
+            if (isAnchor) {
+                this.canvasContext.strokeStyle = activeBorderColor;
+            } else {
+                this.canvasContext.strokeStyle = borderColor;
+            }
+
             this.canvasContext.stroke(circle);
-        }   
+        }
 
         // Draw the anchor
         const anchorsPathList = [];

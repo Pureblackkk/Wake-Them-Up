@@ -8,13 +8,26 @@ export const DefaultSleeperCanvasInformation = {
     startAngle: 0,
     endAngle: 2 * Math.PI,
     isFilled: true,
-    fillColor: 'red',
-    isBorder: false,
+    fillColor: '#CAC9CC',
+    isBorder: true,
+    borderWith: 2,
+    borderColor: '#000000',
+    isAnchor: false,
+    activeBorderColor: '#0068FF',
 };
 
-export const DefaultActiveInformation = {
+export const DefaultAwakeCanvasInformation = {
+    drawType: 'circle',
+    x: 500,
+    y: 500,
+    radius: 30,
+    startAngle: 0,
+    endAngle: 2 * Math.PI,
+    isFilled: true,
+    fillColor: '#F59123',
     isBorder: true,
-    borderWith: 3,
-    borderColor: 'blue',
-    isAnchor: true,
+    borderWith: 2,
+    borderColor: '#000000',
+    isAnchor: false,
+    activeBorderColor: '#0068FF',
 };

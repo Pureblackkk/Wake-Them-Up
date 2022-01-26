@@ -2,15 +2,20 @@ import React from 'react';
 import { SketchPicker } from 'react-color';
 import { PanelOpearationControllerEventName } from '../../../../global/event-name-config';
 import { Button } from 'antd';
+import { 
+    DefaultSleeperCanvasInformation,
+    DefaultAwakeCanvasInformation,
+} from '../../../../core/data-layer/config';
 import './index.css';
 
 export default class SleeperCreaator extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        
         this.state = {
-            sleeperColor: '#000000',
+            sleeperColor: (!!this.props.type) ? DefaultAwakeCanvasInformation.fillColor : DefaultSleeperCanvasInformation.fillColor,
             isSleeperPicker: false,
-            borderColor: '#000000',
+            borderColor: (!!this.props.type) ? DefaultAwakeCanvasInformation.borderColor : DefaultSleeperCanvasInformation.borderColor,
             isBorderPicker: false,
         };
 
@@ -57,7 +62,14 @@ export default class SleeperCreaator extends React.Component {
             sleeperColor: color.hex,
         })
 
-        // TODO: Dispatch event change the canvas color
+        // Dispatch event change the sleeper color
+        window.Eventer.dispatchEvent(
+            PanelOpearationControllerEventName.changeNodeStyle,
+            this.props.type,
+            {
+                fillColor: color.hex,
+            }
+        )
     }
 
     /**
@@ -70,7 +82,24 @@ export default class SleeperCreaator extends React.Component {
             borderColor: color.hex,
         });
 
-        // TODO: Dispatch event change the canvas color
+        // Dispatch event change the border color
+        window.Eventer.dispatchEvent(
+            PanelOpearationControllerEventName.changeNodeStyle,
+            this.props.type,
+            {
+                borderColor: color.hex,
+            }
+        )
+    }
+
+    /**
+     * Create new sleeper
+     */
+    handleCreateButtonClick() {
+        window.Eventer.dispatchEvent(
+            PanelOpearationControllerEventName.createNode,
+            this.props.type
+        )
     }
 
     /**
@@ -119,7 +148,7 @@ export default class SleeperCreaator extends React.Component {
                     /> : null}
                 </div>
                 <div className='panel-create-button'>
-                    <Button type="primary" shape="round" size="middle">
+                    <Button type="primary" shape="round" size="middle" onClick={this.handleCreateButtonClick.bind(this)}>
                         Create
                     </Button>
                 </div>

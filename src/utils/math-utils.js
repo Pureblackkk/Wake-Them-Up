@@ -4,8 +4,8 @@
  * @returns {bool}
  */
 export function getActivityByWeight(weight) {
-    const sudoRandomVariable = Math.random;
-    return sudoRandomVariable < weight;
+    const sudoRandomVariable = Math.random();
+    return sudoRandomVariable <= weight;
 }
 
 /**

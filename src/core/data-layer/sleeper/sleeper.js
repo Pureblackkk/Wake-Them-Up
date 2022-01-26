@@ -12,21 +12,27 @@ import {
 } from '../../../global/event-name-config';
 import { TextSleeper } from './sleeper-text'; 
 import { SleeperPooler } from '../sleeper/sleeper-pool';
+import { SleepersFactory } from './sleeper-factory';
 
 class Sleeper extends TextSleeper {
     constructor(status, canvasInformation) {
         super();
 
-        this.isSleeping = status || true;
+        this.isSleeping = status;
+        this.beforeProcessIsSleeping = status;
+
         this.isActive = false;
         this.isDrag = false;
+
+        // Probability to active others
+        this.probability = 0.0;
 
         this.edgeList = [];
         this.incomingEdgeList = [];
         this.childrenList = [];
         this.childEdgeMapList = [];
 
-        this.canvasInformation = canvasInformation || DefaultSleeperCanvasInformation;
+        this.canvasInformation = canvasInformation || Object.assign({}, DefaultSleeperCanvasInformation);
         this.canvasPath = null;
         this.canvasAnchorsPathList = null;
         this.initEventHandler();
@@ -42,6 +48,8 @@ class Sleeper extends TextSleeper {
         // Draw the text
         this.drawTextArea();
         this.drawText();
+
+        console.log('New Sleeper', this);
     }
 
     initEventHandler() {
@@ -149,22 +157,49 @@ class Sleeper extends TextSleeper {
     /**
      * Change the current node status
      */
-    changeSleepingStatus() {
-        this.isSleeping = !this.isSleeping;
+    changeSleepingStatus(args) {
+        // If not pass status then reverse current status
+        if (args == undefined) {
+            this.isSleeping = !this.isSleeping;
+        } else {
+            this.isSleeping = args;
+        }
+        
+        // Change canvas information
+        const {
+            borderColor,
+            fillColor
+        } = SleepersFactory.getCanvasInformation(!this.isSleeping);
+
+        this.changeCanvasInformation({
+            borderColor,
+            fillColor,
+        });
     }
 
     /**
      * Try to active the children nodes
      */
     activeChild() {
+        const tempActivedChildList = [];
+
         // Active the children in order
         this.childrenList.forEach(childObject => {
-            const weight = childObject.edge.weight;
+            // Only looking for sleeping node
+            if (!childObject.isSleeping) {
+                return;
+            }
+
+            const weight = childObject.probability;
+
             // Change the child status if active
             if (getActivityByWeight(weight)) {
-                childObject.child.changeSleepingStatus();
+                childObject.changeSleepingStatus();
+                tempActivedChildList.push(childObject);
             }
         });
+
+        return tempActivedChildList;
     }
 
     /**
@@ -188,13 +223,14 @@ class Sleeper extends TextSleeper {
         if (sleeper === this && this.isActive === false) {
             // Select this sleeper and active itself
             this.isActive = true;
-            this.changeCanvasInformation(DefaultActiveInformation);
+            this.changeCanvasInformation({
+                isAnchor: true,
+            });
         } else if (this.isActive && sleeper !== this) {
             // Select other sleeper then inactive itself
             this.isActive = false;
             this.isTextMode = false;
             this.changeCanvasInformation({
-                isBorder: false,
                 isAnchor: false,
             });
         }
