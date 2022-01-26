@@ -6,7 +6,7 @@ export default function Swticher(props) {
 
     return (
         <div className='panel-swicher'>
-            <Switch checkedChildren="Prob" unCheckedChildren="Threshold" disabled={true} defaultChecked />
+            <Switch checkedChildren="IC" unCheckedChildren="LT" disabled={true} defaultChecked />
         </div>
     )
 }
