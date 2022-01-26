@@ -24,7 +24,7 @@ export const DefaultAwakeCanvasInformation = {
     startAngle: 0,
     endAngle: 2 * Math.PI,
     isFilled: true,
-    fillColor: '#F59123',
+    fillColor: '#FFB1B2',
     isBorder: true,
     borderWith: 2,
     borderColor: '#000000',

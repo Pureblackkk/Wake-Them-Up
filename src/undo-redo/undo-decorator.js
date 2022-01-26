@@ -104,17 +104,34 @@ export class UndoDecorator {
     static pasteDecorator(controllerFunction) {
         return function() {
             // Firstlu copy
-            const clonedHouse = CopyPasteHouse.package
+            const clonedHouse = CopyPasteHouse.package;
 
             // Add mutation
             Eventer.dispatchEvent(UndoRedoEventName.addMutation, {
                 object: clonedHouse,
                 operation: SavedOperation.paste,
                 params: {},
-            })
+            });
 
             // Original controller
             controllerFunction(clonedHouse);
+        }
+    }
+
+    /**
+     * Decorator for create sleeper
+     */
+    static createSleeperDecorator(controllerFunction) {
+        return function(type, position) {
+            // Original controller
+            const newSleeper = controllerFunction(type, position);
+
+            // Add mutation
+            Eventer.dispatchEvent(UndoRedoEventName.addMutation, {
+                object: newSleeper,
+                operation: SavedOperation.createSleeper,
+                params: {},
+            });
         }
     }
 }

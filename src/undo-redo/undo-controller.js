@@ -30,6 +30,9 @@ export function undoController(task) {
         case (SavedOperation.paste):
             undoPaste(object);
             break;
+        case (SavedOperation.createSleeper):
+            undoCreateSleeper(object);
+            break;
         default:
             break;
     }
@@ -128,6 +131,7 @@ function undoDeleteItems(object) {
 
 /**
  * Undo Paste the item
+ * @param {*} object Deleted object
  */
 function undoPaste(object) {
     for(let item of object) {
@@ -136,4 +140,12 @@ function undoPaste(object) {
             item.deleteSelf();
         }
     }
+}
+
+/**
+ * Undo create sleeper
+ * @param {*} object Deleted object
+ */
+function undoCreateSleeper(object) {
+    object.deleteSelf();
 }

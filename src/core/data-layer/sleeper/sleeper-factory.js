@@ -10,6 +10,7 @@ import {
 import { Eventer } from '../../../utils/event';
 import { Sleeper } from './sleeper';
 import { SleeperPooler } from './sleeper-pool';
+import { UndoDecorator } from '../../../undo-redo/undo-decorator';
 
 class SleeperFactory {
     static getInstance() {
@@ -50,7 +51,7 @@ class SleeperFactory {
         // Register for making new sleeper
         Eventer.addEventListener(
             PanelOpearationControllerEventName.createNode,
-            this.makeNewSleeper.bind(this)
+            UndoDecorator.createSleeperDecorator(this.makeNewSleeper.bind(this))
         );
 
         // Register for changeing sleeper and awake sleepers' style
@@ -135,6 +136,7 @@ class SleeperFactory {
         );
         
         tempSleeper.probability = this.prob;
+        return tempSleeper;
     }
 }
 

@@ -31,6 +31,9 @@ export function redoController(task) {
         case (SavedOperation.paste):
             redoPaste(object);
             break;
+        case (SavedOperation.createSleeper):
+            redoCreateSleeper(object);
+            break;
         default:
             break;
     }
@@ -138,5 +141,13 @@ function redoPaste(object) {
             item.recoverSelf();
         }
     }
+}
+
+/**
+ * Redo create the sleeper
+ * @param {*} object 
+ */
+function redoCreateSleeper(object) {
+    object.recoverSelf();
 }
 

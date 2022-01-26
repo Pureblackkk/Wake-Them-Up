@@ -4,4 +4,5 @@ export const SavedOperation = {
     moveHead: 'moveHead',
     delete: 'delete',
     paste: 'paste',
+    createSleeper: 'createSleeper',
 };
