@@ -1,7 +1,6 @@
 import { 
     DefaultSleeperCanvasInformation,
     DefaultAwakeCanvasInformation,
-    DefaultActiveInformation,
 } from '../config';
 import { 
     PainterEventName,
@@ -34,7 +33,6 @@ class SleeperFactory {
             // Initial params
             this.sleeperCanvasInformation = Object.assign({}, DefaultSleeperCanvasInformation);
             this.awakeCanvasInformation = Object.assign({}, DefaultAwakeCanvasInformation);
-            this.activeInformation = DefaultActiveInformation;
             this.prob = 0.0;
 
             this.initEventsHandler();

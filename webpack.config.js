@@ -11,6 +11,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '',
         filename: '[name].bundle.js',
+        clean: true,
     },
     resolve: {
         extensions: ['.js', '.jsx', '.css'],
@@ -72,7 +73,8 @@ module.exports = {
         new MiniCssExtractPlugin()
     ],
     devServer: {
-        hot: 'true'
+        static: './dist',
+        hot: true,
     },
     devtool: 'inline-source-map',
     mode: 'development',
