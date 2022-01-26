@@ -45,12 +45,14 @@ export const ActionControllerEventName = {
 export const PanelOpearationControllerEventName = {
     closeColorPicker: 'closeColorPicker',
     createNode: 'createNode',
+    panelCreateNode: 'panelCreateNode',
     changeNodeStyle: 'changeNodeStyle',
     changeAllProbability: 'changeAllProbability',
     startWakingProcess: 'startWakingProcess',
     pauseWakingProcess: 'pauseWakingProcess',
     endWakingProcess: 'endWakingProcess',
     resetSleepers: 'resetSleepers',
+    panelActive: 'panelActive',
 };
 
 export const UndoRedoEventName = {

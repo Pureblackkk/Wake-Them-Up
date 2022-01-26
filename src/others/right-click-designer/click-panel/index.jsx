@@ -3,18 +3,25 @@ import { RightClickDesignerConfig } from './config';
 import './index.css';
 
 export default function ClickPanel(props) {
-    const { objectType, result, callback } = props;
+    const { objectType, result, callback, position } = props;
 
     // Get icon src and content
     const contentList = RightClickDesignerConfig[objectType];
 
-    const handleClick = (event, eventName) => {
+    // Set params map
+    const paramsMap = {
+        'null': null,
+        'position': position,
+    }
+
+    const handleClick = (event, eventName, params) => {
         console.log('event', eventName);
 
         // Dispatch the event function
         window.Eventer.dispatchEvent(
             eventName,
             result,
+            paramsMap[params]
         );
 
         // Run callback function from father component
@@ -31,7 +38,7 @@ export default function ClickPanel(props) {
                 contentList.map((item, index) => {
                     return (
                         <li className='right-click-designer-selection' 
-                            onClick={(e) => handleClick(e, item.callbackName)} 
+                            onClick={(e) => handleClick(e, item.callbackName, item.params)}
                             key={index}
                         >
                             <div className='iconfont right-click-designer-selection-icon' dangerouslySetInnerHTML={{ __html: item.src }}></div>

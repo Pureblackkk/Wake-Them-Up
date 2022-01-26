@@ -19,12 +19,16 @@ class PanelOperationController {
         const {
             changeAllProbability,
             resetSleepers,
+            panelCreateNode,
+            panelActive,
         } = PanelOpearationControllerEventName;
 
         // Make EventName-Handler Map
         const eventNamesMap = {};
         eventNamesMap[changeAllProbability] = this.probChangeController;
+        eventNamesMap[panelCreateNode] = this.panelCreateNodeController;
         eventNamesMap[resetSleepers] = this.resetController;
+        eventNamesMap[panelActive] = this.panelActiveController;
 
         // Init event handler
         for (const eventName in eventNamesMap) {
@@ -55,6 +59,31 @@ class PanelOperationController {
                 sleeper.changeSleepingStatus(sleeper.beforeProcessIsSleeping);
             }
         }
+
+        // Trigger the painter event to redraw
+        Eventer.dispatchEvent(
+            PainterEventName.repaint,
+        );
+    }
+
+    /**
+     * Create sleeper from panel
+     */
+    panelCreateNodeController(obj, position) {
+        Eventer.dispatchEvent(
+            PanelOpearationControllerEventName.createNode,
+            0,
+            position,
+        );
+    }
+
+    /**
+     * Acitve sleeper with context meanu
+     */
+    panelActiveController(sleeper) {
+        // Active sleeper
+        sleeper.changeSleepingStatus();
+        sleeper.beforeProcessIsSleeping = sleeper.isSleeping;
 
         // Trigger the painter event to redraw
         Eventer.dispatchEvent(

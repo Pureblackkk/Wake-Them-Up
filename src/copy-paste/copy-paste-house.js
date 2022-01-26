@@ -27,7 +27,7 @@ class CopyPasteHouse {
     }
 
     static get package() {
-        return this.house;
+        return cloneDeep(this.house);
     }
 }
 

@@ -145,10 +145,7 @@ class KeyboardActionController {
     /**
      * Paste the object store in copy-paste house
      */
-    keyboardPasteController() {
-        // Get the object
-        const copyedObjectList = CopyPasteHouse.package;
-        
+    keyboardPasteController(copyedObjectList) {        
         for (let item of copyedObjectList) {
             // TODO: Only support for sleeper now
             if (item instanceof Sleeper) {

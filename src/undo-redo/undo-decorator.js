@@ -103,15 +103,18 @@ export class UndoDecorator {
      */
     static pasteDecorator(controllerFunction) {
         return function() {
+            // Firstlu copy
+            const clonedHouse = CopyPasteHouse.package
+
             // Add mutation
             Eventer.dispatchEvent(UndoRedoEventName.addMutation, {
-                object: CopyPasteHouse.package,
+                object: clonedHouse,
                 operation: SavedOperation.paste,
                 params: {},
             })
 
             // Original controller
-            controllerFunction();
+            controllerFunction(clonedHouse);
         }
     }
 }

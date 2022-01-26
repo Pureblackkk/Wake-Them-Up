@@ -112,13 +112,21 @@ class SleeperFactory {
     /**
      * Make new sleeper to sleeper pool
      * @param {int} type 0 for sleeper, 1 for awake sleeper
+     * @param {object} position location to make new sleeper
      */
-    makeNewSleeper(type) {
+    makeNewSleeper(type, position) {
+        console.log('create');
         // Get sleep status
         const status = !type;
 
         // Get canvas information
         const canvasInformation = !!type ? Object.assign({}, this.awakeCanvasInformation) : Object.assign({}, this.sleeperCanvasInformation);
+
+        // Set posiition
+        if (!!position) {
+            canvasInformation.x = position.x;
+            canvasInformation.y = position.y;
+        }
 
         // Make new sleeper
         const tempSleeper = new Sleeper(

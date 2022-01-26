@@ -1,6 +1,7 @@
 import React from 'react';
 import ClickPanel from './click-panel/index'
 import { ActionControllerEventName } from '../../global/event-name-config';
+import { GlobalConfig } from '../../global/global-config';
 import './index.css';
 
 class RightClickDesigner extends React.Component {
@@ -78,11 +79,12 @@ class RightClickDesigner extends React.Component {
         const { x, y } = this.mousePosition;
         let panel = isShow ? 
         (
-            <div className='right-click-designer-wrap' style={{left: x, top: y}}>
+            <div className='right-click-designer-wrap' style={{left: x+GlobalConfig.pandelWidth, top: y+GlobalConfig.headerHeight}}>
                 <ClickPanel 
                     objectType={objectType}
                     result={this.result}
                     callback={this.handlePanelClick.bind(this)}
+                    position={this.mousePosition}
                 />
             </div>
         )
