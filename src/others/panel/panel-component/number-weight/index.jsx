@@ -31,7 +31,7 @@ class NumberWeights extends React.Component {
     render() {
         const { inputValue } = this.state;
         return (
-            <div className='panel-cascade-probability'>
+            <div className='panel-cascade-probability' onKeyPress={this.onKeyPress}>
                 <Tooltip placement="bottomLeft" title={'Probability for waking up other sleepers'}>
                     <div className='panel-cascade-name'>Probability</div>
                 </Tooltip>    
@@ -54,6 +54,7 @@ class NumberWeights extends React.Component {
                             step={0.01}
                             value={inputValue}
                             onChange={this.onChange}
+                            id="panelCascadeProbability"
                         />
                         </Col>
                     </Row>

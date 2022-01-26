@@ -5,6 +5,7 @@ import NumberWeights from './panel-component/number-weight/index';
 import Swicher from './panel-component/swicher/index';
 import StartPause from './panel-component/start-pause';
 import { PanelOpearationControllerEventName } from '../../global/event-name-config';
+import { ExcludeClickClassName } from '../../global/global-config';
 import './index.css';
 
 class Panel extends React.Component {
@@ -12,12 +13,12 @@ class Panel extends React.Component {
         super();
     }
 
-    handleClick() {
-        // TODO: Add event to close all the color picker
+    handleClick(event) {
+        // Add event to close all the color picker
         window.Eventer.dispatchEvent(
             PanelOpearationControllerEventName.closeColorPicker,
             null
-        )
+        );
     }
     
     render() {

@@ -4,6 +4,7 @@ import {
     ActionControllerEventName,
     UndoRedoEventName,
 } from '../../../global/event-name-config';
+import { ExcludeKeyEventId } from '../../../global/global-config';
 
 class KeyboardAction {
     constructor(canvas, mouseAction) {
@@ -23,6 +24,11 @@ class KeyboardAction {
 
         for (let action in actionsMap) {
             window.addEventListener(action, event => {
+                // Exclude event from panel
+                if (event.target.id in ExcludeKeyEventId) {
+                    return;
+                }
+
                 actionsMap[action](event);
             });
         }

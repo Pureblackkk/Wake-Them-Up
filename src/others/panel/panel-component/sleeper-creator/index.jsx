@@ -112,8 +112,8 @@ export default class SleeperCreaator extends React.Component {
 
     render() {
         return (
-            <div className='panel-sleeper-creator' onClick={(event) => this.stopPopUp(event)}>
-                <div className='panel-sleeper-color'>
+            <div className='panel-sleeper-creator'>
+                <div className='panel-sleeper-color' onClick={this.stopPopUp}>
                     <div className='panel-sleeper-name'>
                         {this.props.sleeperName}
                     </div>
@@ -128,9 +128,10 @@ export default class SleeperCreaator extends React.Component {
                         className='panel-color-picker'
                         color={this.state.sleeperColor}
                         onChange={this.handleSleeperColorChange}
+                        id='panelColorPicker'
                     /> : null}
                 </div>
-                <div className='panel-border-color'>
+                <div className='panel-border-color' onClick={this.stopPopUp}>
                     <div className='panel-border-name'>
                         {this.props.borderName}
                     </div>
@@ -145,6 +146,7 @@ export default class SleeperCreaator extends React.Component {
                         className='panel-color-picker'
                         color={this.state.borderColor}
                         onChange={this.handleBorderColorChange}
+                        id='panelColorPicker'
                     /> : null}
                 </div>
                 <div className='panel-create-button'>

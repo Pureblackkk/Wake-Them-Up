@@ -4,6 +4,7 @@ import {
     ActionControllerEventName,
     PainterEventName,
     UndoRedoEventName,
+    PanelOpearationControllerEventName,
 } from '../../../global/event-name-config';
 import { SavedOperation } from '../../../undo-redo/operation';
 import { ActionUtils } from '../action-utils';
@@ -54,6 +55,12 @@ class MouseAction {
     }
 
     handleMouseDown(event) {
+        // Close color picker
+        Eventer.dispatchEvent(
+            PanelOpearationControllerEventName.closeColorPicker,
+            null
+        );
+
         const location = {
             x: event.offsetX,
             y: event.offsetY,
