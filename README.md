@@ -2,6 +2,8 @@
 This is a data visualization for basic information diffusion model (Independent Cascade Model) by javascript.
 You can define your own network structure in it and initialize those nodes who are activated.
 
+demo available: https://pureblackkk.github.io/Wake-Them-Up/
+
 ### Install Locally
 Simple npm install is fine
 ```bash
