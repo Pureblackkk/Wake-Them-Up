@@ -60,3 +60,10 @@ export const UndoRedoEventName = {
     undo: 'undo',
     redo: 'redo',
 };
+
+export const SummaryEventName = {
+    drawShare: 'drawShare',
+    getShareColor: 'getShareColor',
+    updateShareColor: 'updateShareColor',
+    updateDetail: 'updateDetail',
+}

@@ -5,6 +5,7 @@ import {
 import { 
     PainterEventName,
     PanelOpearationControllerEventName,
+    SummaryEventName,
 } from '../../../global/event-name-config';
 import { Eventer } from '../../../utils/event';
 import { Sleeper } from './sleeper';
@@ -56,6 +57,12 @@ class SleeperFactory {
         Eventer.addEventListener(
             PanelOpearationControllerEventName.changeNodeStyle,
             this.changeCanvasInformation.bind(this)
+        );
+
+        // Register for pass the color
+        Eventer.addEventListener(
+            SummaryEventName.getShareColor,
+            this.passSleeperColor.bind(this)
         );
     }
 
@@ -135,6 +142,19 @@ class SleeperFactory {
         
         tempSleeper.probability = this.prob;
         return tempSleeper;
+    }
+
+    /**
+     * set the color
+     */
+    passSleeperColor(colorListForSet) {
+        if (colorListForSet.length == 0) {
+            colorListForSet.push(this.sleeperCanvasInformation.fillColor);
+            colorListForSet.push(this.awakeCanvasInformation.fillColor);
+        } else {
+            colorListForSet[0] = this.sleeperCanvasInformation.fillColor;
+            colorListForSet[1] = this.awakeCanvasInformation.fillColor;
+        }
     }
 }
 

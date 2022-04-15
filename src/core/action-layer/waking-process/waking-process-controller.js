@@ -3,6 +3,7 @@ import { SleeperPooler } from '../../data-layer/sleeper/sleeper-pool';
 import {
     PainterEventName,
     PanelOpearationControllerEventName,
+    SummaryEventName,
 } from '../../../global/event-name-config';
 
 class WakingProcessController {
@@ -37,6 +38,7 @@ class WakingProcessController {
     }
 
     initAwakeQueue() {
+        this.roundNum = 0;
         const tempQueue = [];
 
         for (const sleeper of SleeperPooler.pool) {
@@ -46,12 +48,24 @@ class WakingProcessController {
         }
 
         this.awakeQueue = tempQueue;
+
+        // Trigger Summary
+        const sleeperAndAwakeNum = this.countSleeperAndAwake()
+        Eventer.dispatchEvent(
+            SummaryEventName.drawShare,
+            sleeperAndAwakeNum,
+        );
+        Eventer.dispatchEvent(
+            SummaryEventName.updateDetail,
+            sleeperAndAwakeNum[0],
+            sleeperAndAwakeNum[1],
+            this.roundNum
+        );
     }
     
     startWakingProcessController() {
         this.isPause = false;
         this.initAwakeQueue();
-        console.log('This is awake queue1', this.awakeQueue);
 
         // Set interval
         this.refreshIntervalId = setInterval(() => {
@@ -65,6 +79,19 @@ class WakingProcessController {
 
                 // Add round number
                 this.roundNum += 1;
+
+                // Trigger Summary
+                const sleeperAndAwakeNum = this.countSleeperAndAwake()
+                Eventer.dispatchEvent(
+                    SummaryEventName.drawShare,
+                    sleeperAndAwakeNum,
+                );
+                Eventer.dispatchEvent(
+                    SummaryEventName.updateDetail,
+                    sleeperAndAwakeNum[0],
+                    sleeperAndAwakeNum[1],
+                    this.roundNum
+                );
 
                 // Trigger the painter event to redraw
                 Eventer.dispatchEvent(
@@ -83,11 +110,25 @@ class WakingProcessController {
         }, this.frameTime);
     }
 
+    /**
+     * Pause the waking process 
+     */
     pauseWakingProcessController() {
         this.isPause = true;
     }
 
-    
+    /**
+     * Count the number of sleeper and Awaker
+     */
+    countSleeperAndAwake() {
+        let sleeperNum = 0;
+        for (const sleeper of SleeperPooler.pool) {
+            if (sleeper.isSleeping) {
+                sleeperNum += 1;
+            }
+        }
+        return [sleeperNum, SleeperPooler.pool.length - sleeperNum];
+    }
 }
 
 export { WakingProcessController };

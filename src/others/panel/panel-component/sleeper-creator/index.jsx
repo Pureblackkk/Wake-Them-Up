@@ -1,6 +1,9 @@
 import React from 'react';
 import { SketchPicker } from 'react-color';
-import { PanelOpearationControllerEventName } from '../../../../global/event-name-config';
+import { 
+    PanelOpearationControllerEventName,
+    SummaryEventName
+} from '../../../../global/event-name-config';
 import { Button } from 'antd';
 import { 
     DefaultSleeperCanvasInformation,
@@ -69,6 +72,13 @@ export default class SleeperCreaator extends React.Component {
             {
                 fillColor: color.hex,
             }
+        )
+
+        // Dispatch event change the summary bar color
+        window.Eventer.dispatchEvent(
+            SummaryEventName.updateShareColor,
+            this.props.type,
+            color.hex,
         )
     }
 

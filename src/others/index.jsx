@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './header/index';
 import Panel from './panel/index';
 import RightClickDesigner from './right-click-designer/index';
+import Summary from './summary/index';
 import './index.css';
 
 ReactDOM.render(
@@ -19,5 +20,15 @@ ReactDOM.render(
     <RightClickDesigner/>,
     document.getElementById('rightClickDesigner')
 );
+
+ReactDOM.render(
+    <RightClickDesigner/>,
+    document.getElementById('rightClickDesigner')
+);
+
+ReactDOM.render(
+    <Summary/>,
+    document.getElementById('summary')
+)
 
 
