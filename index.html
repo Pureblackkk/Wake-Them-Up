@@ -12,12 +12,18 @@
             height: 100%;
             width: 100%;
         }
+
         li {
             list-style-type: none;
         }
+        
         .workingSpace {
             position: relative;
             display: flex;
+        }
+
+        #summary {
+            z-index: auto;
         }
     </style>
     
@@ -37,6 +43,7 @@
         <div class="workingSpace">
             <div id="panel"></div>
             <canvas id="myCanvas"></canvas>
+            <div id="summary"></div>
         </div>
         <div id="rightClickDesigner"></div>
     </div>
