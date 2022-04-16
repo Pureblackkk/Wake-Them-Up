@@ -1,6 +1,7 @@
 # Wake-Them-Up
 This is a data visualization for basic information diffusion model (Independent Cascade Model) by javascript.
-You can define your own network structure in it and initialize those nodes who are activated.
+You can define your own network structure in it and initialize those nodes who are activated. By assign a global probability, you can see how it will be propagated.
+![Uploading 截屏2022-04-15 下午3.43.04.png…]()
 
 demo available: https://pureblackkk.github.io/Wake-Them-Up/
 
@@ -17,6 +18,7 @@ npm run start
 + Assign name for each sleeper by double clicking
 + Star/Pause when propagating
 + Right click for context menu
++ Dynamic Summary Pannel
 
 ### Future Functions
 + Export canvas image
